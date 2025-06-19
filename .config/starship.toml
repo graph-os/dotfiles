@@ -1,0 +1,89 @@
+# Minimal Starship configuration for public dotfiles
+
+# Timeout for commands
+command_timeout = 500
+
+# Format of the prompt
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$rust\
+$golang\
+$docker_context\
+$line_break\
+$character"""
+
+# Disable the package module
+[package]
+disabled = true
+
+# Username
+[username]
+style_user = "green bold"
+style_root = "red bold"
+format = "[$user]($style) "
+disabled = false
+show_always = false
+
+# Hostname
+[hostname]
+ssh_only = true
+format = "[@$hostname](bold yellow) "
+disabled = false
+
+# Directory
+[directory]
+style = "blue bold"
+format = "[$path]($style) "
+truncation_length = 3
+truncate_to_repo = true
+
+# Git branch
+[git_branch]
+style = "purple bold"
+format = "[$symbol$branch]($style) "
+symbol = ""
+
+# Git status
+[git_status]
+style = "red bold"
+format = "[$all_status$ahead_behind]($style) "
+
+# Character
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold green)"
+
+# Languages (minimal configs)
+[python]
+format = "[${symbol}${pyenv_prefix}(${version} )]($style)"
+symbol = "🐍 "
+style = "yellow bold"
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+symbol = "⬢ "
+style = "green bold"
+
+[rust]
+format = "[$symbol($version )]($style)"
+symbol = "🦀 "
+style = "red bold"
+
+[golang]
+format = "[$symbol($version )]($style)"
+symbol = "🐹 "
+style = "cyan bold"
+
+# Docker
+[docker_context]
+format = "[$symbol$context]($style) "
+symbol = "🐋 "
+style = "blue bold"
+only_with_files = true
